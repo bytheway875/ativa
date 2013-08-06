@@ -6,6 +6,7 @@ Ativa::Application.routes.draw do
   get 'projects/:id/:phase' => 'projects#set_phase', as: 'set_phase'
   resources :projects
   resources :posts
+  post 'potential_admins'=> 'potentialAdmins#create', as: 'potential_admins'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

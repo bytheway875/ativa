@@ -12,3 +12,4 @@
       = @user.name
       %small=# if @user.client? then " #{@user.project.name}" else " Perfect Search Media" end
     %h3= @user.email
+    %h3.pagination-centered= @user.type
