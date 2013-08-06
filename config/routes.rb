@@ -1,9 +1,18 @@
 Ativa::Application.routes.draw do
+
+
   root to: "projects#index"
   get 'projects/:id/:phase/:show_partial' => 'projects#show', as: 'project_partial'
   get 'projects/:id/:phase' => 'projects#set_phase', as: 'set_phase'
   resources :projects
   resources :posts
+  post 'potential_admins'=> 'potentialAdmins#create', as: 'potential_admins'
+
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get', as: 'signin'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
 
 
   # The priority is based upon order of creation:
